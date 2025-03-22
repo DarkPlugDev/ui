@@ -4,26 +4,32 @@ local HttpService = game:GetService("HttpService")
 local TweenService = game:GetService("TweenService")
 local UserInputService = game:GetService("UserInputService")
 local MarketplaceService = game:GetService("MarketplaceService")
+local RunService = game:GetService("RunService")
 local Player = Players.LocalPlayer
 local ViewportSize = workspace.CurrentCamera.ViewportSize
 local UIScale = ViewportSize.Y / 550
 
+-- RedzLib Library
 local RedzLib = {
-  PlayerName = Player.Name,
-  GameName = MarketplaceService:GetProductInfo(game.PlaceId).Name,
-  Icons = {},
-  Elements = {},
-  Configs = {
-    ["Color Hub 1"] = Color3.fromRGB(10, 10, 30),
-    ["Color Hub 2"] = Color3.fromRGB(15, 15, 35),
-    ["Color Theme"] = Color3.fromRGB(30, 160, 255),
-    ["Color Text"] = Color3.fromRGB(200, 200, 200),
-    ["Color Dark Text"] = Color3.fromRGB(140, 140, 140),
-    ["Color Stroke"] = Color3.fromRGB(60, 60, 60),
-    ["Corner Radius"] = UDim.new(0, 4),
-    ["Font"] = Enum.Font.FredokaOne
-  }
+    PlayerName = Player.Name,
+    GameName = MarketplaceService:GetProductInfo(game.PlaceId).Name,
+    Icons = {},
+    Elements = {},
+    Configs = {
+        ["Color Hub 1"] = Color3.fromRGB(10, 10, 30),
+        ["Color Hub 2"] = Color3.fromRGB(15, 15, 35),
+        ["Color Theme"] = Color3.fromRGB(30, 160, 255),
+        ["Color Text"] = Color3.fromRGB(200, 200, 200),
+        ["Color Dark Text"] = Color3.fromRGB(140, 140, 140),
+        ["Color Stroke"] = Color3.fromRGB(60, 60, 60),
+        ["Corner Radius"] = UDim.new(0, 4),
+        ["Font"] = Enum.Font.FredokaOne,
+        ["Transparency"] = 0.5,
+        ["Animation Speed"] = 0.2
+    }
 }
+
+-- Fetch Icons from GitHub
 local GitHub = "https://raw.githubusercontent.com/"
 RedzLib.Icons = HttpService:JSONDecode(game:HttpGetAsync(GitHub .. "evoincorp/lucideblox/master/src/modules/util/icons.json")).icons
 
